@@ -53,7 +53,7 @@ class CHATFile(BaseFormat):
 
         if path:
             # read in the resulting file
-            with open(path, "r") as df:
+            with open(path, "r", encoding="UTF-8") as df:
                 # get alignment result
                 data = df.readlines()
             # conform result with tab-seperated beginnings

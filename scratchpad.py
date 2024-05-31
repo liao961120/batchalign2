@@ -17,11 +17,8 @@ L.getLogger('batchalign').setLevel(L.DEBUG)
 
 from batchalign import *
 
-# with open("schema.json", 'w') as df:
-#     json.dump(Document.model_json_schema(), df, indent=4)
-
 ########### The Batchalign Core Test Harness ###########
-from batchalign.formats.chat.parser import chat_parse_utterance
+# from batchalign.formats.chat.parser import chat_parse_utterance
 
 # ng = NgramRetraceEngine()
 # disf = DisfluencyReplacementEngine()
@@ -60,19 +57,7 @@ from batchalign.formats.chat.parser import chat_parse_utterance
 #     return leafs
 
 # from batchalign.models import BertUtteranceModel
-# from batchalign.pipelines import BatchalignPipeline
-# tmp = CHATFile(path="../talkbank-alignment/test_harness/input/20024_hald.cha").doc
-# pipe = BatchalignPipeline.new("morphosyntax", "jpn")
-# # tmp.langs = ["jpn"]
-# # # tmp[-1].content
-# res = pipe(tmp, retokenize=True)
-# print(str(CHATFile(doc=res)))
-
-
-# tmp[-1].content
-# tmp[-1]
-# tmp[6]
-
+# tmp = CHATFile(path="./extern/Untitled.cha").doc
 # tmp
 # tmp1 = sue(tmp)
 # tmp1
@@ -96,41 +81,37 @@ from batchalign.formats.chat.parser import chat_parse_utterance
 # lang = "cym"
 # num_speakers = 1
 
-# forms, delim = chat_parse_utterance("つ^み^きは?", None, None, None, None)
-# utterance = Utterance(content=forms, delim=delim, text="つ^み^きは?")
+# forms, delim = chat_parse_utterance(text, None, None, None, None)
+# utterance = Utterance(content=forms, delim=delim)
 
-# ut = Document(content=[utterance], langs=["jpn"])
+# ut = Document(content=[utterance], langs=[lang])
 
-# pipeline = BatchalignPipeline.new("morphosyntax", lang="jpn")
-# res = pipeline(ut, retokenize=True)
+# pipeline = BatchalignPipeline.new(function, lang=lang)
+# res = pipeline(ut)
 
 # print(str(CHATFile(doc=res)))
 
 
 ########### The Batchalign Individual Engine Harness ###########
 
-# text = "We should be friends! Yes we should."
-# # text = "ice ice cream ice ice cream ice ice cream"
+# text = "I love chicken pie I love chicken pie I love chicken pie "
+# text = "ice ice cream ice ice cream ice ice cream"
 
-# # ice ice cream ice cream
-# # ice [/] <ice cream> [/] ice cream
-# # ice cream ice cream ice cream ice ice cream cream
+# ice ice cream ice cream
+# ice [/] <ice cream> [/] ice cream
+# ice cream ice cream ice cream ice ice cream cream
 
 # lang = "eng"
 
-# # forms, delim = chat_parse_utterance(text, None, None, None, None)
-# # utterance = Utterance(content=forms, delim=delim)
-# # ut = Document(content=[utterance], langs=[lang])
+# forms, delim = chat_parse_utterance(text, None, None, None, None)
+# utterance = Utterance(content=forms, delim=delim)
+# ut = Document(content=[utterance], langs=[lang])
 
-# doc = Document.new(text, lang=lang)
-
-# retrace = StanzaEngine()
+# retrace = NgramRetraceEngine()
 # pipe = BatchalignPipeline(retrace)
 
-# doc = pipe(doc)
-# doc
-
-# # # doc[0].content
+# doc = pipe(ut)
+# # doc[0].content
 
 # print(str(CHATFile(doc=doc)))
 

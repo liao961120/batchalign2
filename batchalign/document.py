@@ -1,5 +1,5 @@
 from enum import Enum, IntEnum
-from typing import Optional, List, Tuple, Union, Any, Dict
+from typing import Optional, List, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import BaseModel, Field, computed_field
@@ -193,12 +193,9 @@ class Utterance(BaseModel):
 
     def __str__(self):
         if self.text != None:
-            t = self.text
+            return self.text
         else:
-            t = self._detokenize()
-
-        t = t.replace(". . .", "+...")
-        return t
+            return self._detokenize()
 
     def __repr__(self):
         return str(self)
@@ -334,7 +331,6 @@ class Document(BaseModel):
     langs: List[str] = Field(default=["eng"])
     # persistent digital identifier
     pid: Optional[str] = Field(default=None)
-    ba_special_: Optional[Dict] = Field(default={})
 
     def __repr__(self):
         return "\n".join(self.transcript())
